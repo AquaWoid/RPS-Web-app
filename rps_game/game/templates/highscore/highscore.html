@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>High Scores</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body class="highscores">
+
+    <h1>High Scores</h1>
+
+    <h2>Highest Streak High-Score</h2>
+
+    <!--Looping through the highest streak scores-->
+    <ol class="scorelist">
+        {% for score in highest_streak_users %}
+        <li style="list-style-position: inside;">{{ score.user.username }} - Highest Streak: {{ score.highest_streak }}</li>
+        {% endfor %}
+    </ol>
+
+    <h2>Total Wins High-Score</h2>
+
+    <!--Looping through the total wins scores-->
+    <ol class="scorelist">
+        {% for score in total_wins_users %}
+        <li style="list-style-position: inside;">{{ score.user.username }} - Total Wins: {{ score.total_wins }}</li>
+        {% endfor %}
+    </ol>
+
+    <!--Game redirect button-->
+    <form method="post" action="{% url 'game:game' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn">Play Again</button>
+    </form>
+
+    <!--Logout button-->
+    <form method="post" action="{% url 'game:logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn">Logout</button>
+    </form>
+
+
+
+
+</body>
+</html>

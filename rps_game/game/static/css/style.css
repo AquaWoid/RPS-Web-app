@@ -1,0 +1,63 @@
+.login {
+    font-family: sans-serif;
+    font-size:larger;
+    margin : 0;
+    background: gray;
+    text-align: left;
+    margin-left: 1%;
+
+}
+
+
+
+li {
+    width: 100%;
+}
+
+ol {
+    display: block;
+}
+.pwd {
+    margin-left: 4px;
+}
+
+.btn {
+    width: 120px;
+}
+
+.scorelist {
+    text-align: center;
+}
+
+.game {
+
+    font-family: sans-serif;
+    font-size:larger;
+    margin : 0;
+    background: gray;
+    text-align: center;
+    margin-left: 1%;
+}
+
+
+
+.gamewrapper {
+    margin-top: 10%;
+}
+
+.highscores {
+    font-family: sans-serif;
+    font-size:larger;
+    margin : 0;
+    background: gray;
+    text-align: center;
+    margin-left: 1%;
+}
+
+.btnplay {
+    width: 150px;
+}
+
+.btnlogout {
+    width: 120px;
+}

@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body class="login">
+
+
+    <h1>Login</h1>
+
+    <!--Displaying possible login errors-->
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% endif %}
+
+
+    <!--Login frontend-->
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" name="username" required>
+        <br>
+        <label for="password" class="pwd">Password:</label>
+        <input type="password" name="password" required>
+        <br>
+        <input type="submit" value="Login">
+        <input type="hidden" name="action" value="login">
+    </form>
+
+    <h2>Register</h2>
+
+    <!--Register Frontend-->
+    <form method="post" class="regform">
+        {% csrf_token %}
+        {{ registration_form.as_p }}
+
+        <!--Displaying possible errors-->
+        {% for field in registration_form %}
+            {% for error in field.errors %}
+                <p style="color: red;">{{ error }}</p>
+            {% endfor %}
+        {% endfor %}
+
+        <input type="submit" value="Register">
+        <input type="hidden" name="action" value="register">
+    </form>
+
+    <!--Success message-->
+    {% if success_message %}
+        <p style="color:green">{{ success_message }}</p>
+    {% endif %}    
+
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body class = "game">
+
+
+<div class = "gamewrapper">
+
+
+    <h1>Rock Paper Scissors</h1>
+
+    <!--Displaying the user's name-->
+    <p>Welcome, {{ request.user.username }}!</p>
+
+    <!--Rock Paper Scissors frontend-->
+    <form method="post">
+        {% csrf_token %}
+        <label for="user_choice">Choice: </label>
+        <select name="user_choice">
+            <option value="Rock">Rock</option>
+            <option value="Paper">Paper</option>
+            <option value="Scissors">Scissors</option>
+        </select>
+        <br>
+        <input type="submit" value="Play" class="btn">
+    </form>
+
+    <!--Displaying the scores-->    
+    <P>Score: {{current_score}}</P>
+    <P>Total Wins: {{total_wins}}</P>
+    <P>Highest Streak: {{highest_streak}}</P>
+    <P>Results: {{result_message}}</P>
+
+
+    <!--Highscores redirect button-->
+    <form method="post" action="{% url 'game:highscore' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn">View Highscores</button>
+    </form>
+    <!--Logout button-->
+    <form method="post" action="{% url 'game:logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="btnlogout">Logout</button>
+    </form>
+   
+
+
+</div>
+
+
+</body>
+</html>
